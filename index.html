@@ -47,14 +47,23 @@
     }
     .navbar-brand, .nav-link { color: white !important; }
 
+    /* Make the toggler icon visible on dark background */
+    .navbar-toggler { border-color: rgba(255,255,255,0.2); }
+    .navbar-toggler-icon {
+      filter: invert(1);
+      opacity: 0.9;
+    }
+
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
+      padding-top: 90px; /* space for fixed navbar */
       background: radial-gradient(circle at top right, rgba(13,110,253,0.15), transparent),
                   url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
       background-blend-mode: overlay;
     }
+
     .hero-glass {
       background: rgba(255,255,255,0.03);
       backdrop-filter: blur(10px);
@@ -63,13 +72,33 @@
       border-radius: 24px;
     }
 
+    /* === HERO HEADING CONTROL (NEW) === */
+    .hero-title {
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.08;
+      margin: 0 0 1rem 0;
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      color: #f5f7fa;
+      word-break: normal;
+      overflow-wrap: anywhere;
+    }
+    .hero-highlight {
+      color: var(--primary);
+      display: inline;
+    }
+
     .card {
       background: var(--card-bg);
       border: 1px solid rgba(255,255,255,0.1);
       color: white;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.1); border-color: var(--primary); }
+    .card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.1);
+      border-color: var(--primary);
+    }
 
     .skill-icon {
       font-size: 2.5rem;
@@ -108,18 +137,35 @@
       color: white;
       transition: 0.3s;
     }
-    .social-link:hover { background: var(--primary); color: white; transform: scale(1.1); }
+    .social-link:hover {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
+    }
 
     .section-title { font-weight: 800; letter-spacing: -1px; margin-bottom: 3rem; }
     .section-title span { color: var(--primary); }
 
-    .contact-info { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
-    .contact-info a { display: flex; align-items: center; gap: 10px; font-weight: 500; color: var(--primary); text-decoration: none; transition: color 0.3s; }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .contact-info a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
     .contact-info a:hover { color: var(--secondary); }
     .contact-info i { font-size: 1.3rem; }
-
   </style>
 </head>
+
 <body>
 
 <div id="particles-js"></div>
@@ -127,8 +173,8 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg fixed-top py-3">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">SAVVY<span class="text-primary"></span></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+    <a class="navbar-brand fw-bold" href="#">SAVVY</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
@@ -149,8 +195,18 @@
       <div class="col-lg-7" data-aos="fade-right">
         <div class="hero-glass">
           <span class="badge bg-primary mb-3">Available for opportunities in Australia</span>
-          <h1 class="display-3 fw-bold">Designing, securing, and strengthening<span class="text-primary">modern IT environments.</span></h1>
-          <p class="lead mb-4 opacity-75">Sarvgya Nath Pant — Network & System Administrator specializing in government-grade security and enterprise scalability.</p>
+
+          <!-- UPDATED HEADING -->
+          <h1 class="hero-title">
+            Designing, securing, and strengthening
+            <br class="d-none d-md-block" />
+            <span class="hero-highlight">modern IT environments.</span>
+          </h1>
+
+          <p class="lead mb-4 opacity-75">
+            Sarvgya Nath Pant — Network & System Administrator specializing in government-grade security and enterprise scalability.
+          </p>
+
           <div class="d-flex gap-3">
             <a href="#contact" class="btn btn-gradient btn-lg">Hire Me</a>
             <a href="Sarvgya-Nath-Pant-CV.pdf" class="btn btn-outline-light btn-lg" download>Download CV</a>
@@ -247,10 +303,10 @@
           <a href="mailto:savvy@sarvgya.com"><i class="bi bi-envelope-fill"></i> savvy@sarvgya.com</a>
         </div>
         <div class="d-flex gap-3 mt-3">
-          <a href="https://linkedin.com/in/sarvgyapant" class="social-link"><i class="bi bi-linkedin"></i></a>
-          <a href="https://github.com/sarvgyapant" class="social-link"><i class="bi bi-github"></i></a>
-          <a href="https://www.facebook.com/share/1CWPaworDB/?mibextid=wwXIfr" class="social-link"><i class="bi bi-facebook"></i></a>
-          <a href="https://www.instagram.com/sarvgya" class="social-link"><i class="bi bi-instagram"></i></a>
+          <a href="https://linkedin.com/in/sarvgyapant" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="https://github.com/sarvgyapant" class="social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="https://www.facebook.com/share/1CWPaworDB/?mibextid=wwXIfr" class="social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/sarvgya" class="social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
         </div>
       </div>
       <div class="col-md-6">
@@ -269,10 +325,10 @@
 <footer class="py-4 text-center border-top border-secondary">
   <div class="container">
     <div class="social-slider">
-      <a href="https://www.linkedin.com/in/sarvgyapant" target="_blank"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/sarvgyapant" target="_blank"><i class="bi bi-github"></i></a>
-      <a href="https://www.facebook.com/share/1CWPaworDB/?mibextid=wwXIfr" target="_blank"><i class="bi bi-facebook"></i></a>
-      <a href="https://www.instagram.com/sarvgya" target="_blank"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/sarvgyapant" target="_blank" rel="noreferrer"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/sarvgyapant" target="_blank" rel="noreferrer"><i class="bi bi-github"></i></a>
+      <a href="https://www.facebook.com/share/1CWPaworDB/?mibextid=wwXIfr" target="_blank" rel="noreferrer"><i class="bi bi-facebook"></i></a>
+      <a href="https://www.instagram.com/sarvgya" target="_blank" rel="noreferrer"><i class="bi bi-instagram"></i></a>
     </div>
     <p class="mt-3 mb-0 opacity-50">© 2026 Sarvgya Nath Pant</p>
   </div>
@@ -281,22 +337,23 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
 <script>
   AOS.init({ duration: 1000, once: true });
+
   particlesJS('particles-js', {
-    particles: { number:{value:80}, color:{value:"#0d6efd"}, shape:{type:"circle"}, opacity:{value:0.5}, size:{value:3},
-      line_linked:{enable:true, distance:150, color:"#0d6efd", opacity:0.2, width:1}, move:{enable:true, speed:2}},
-    interactivity:{ events:{ onhover:{ enable:true, mode:"grab" } } }
+    particles: {
+      number: { value: 80 },
+      color: { value: "#0d6efd" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5 },
+      size: { value: 3 },
+      line_linked: { enable: true, distance: 150, color: "#0d6efd", opacity: 0.2, width: 1 },
+      move: { enable: true, speed: 2 }
+    },
+    interactivity: { events: { onhover: { enable: true, mode: "grab" } } }
   });
 </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
