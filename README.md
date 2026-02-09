@@ -166,4 +166,5 @@ Feel free to use the structure and design for your own portfolio.
 
 ---
 
+**Built with ❤️ in Melbourne**
 © 2026 Sarvgya Nath Pant. All rights reserved.
